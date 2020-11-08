@@ -1,0 +1,12 @@
+- id: sort-gitattributes
+  name: sort-gitattributes
+  entry: sort-gitattributes
+  language: python
+  files: ^.*[.]gitattributes$
+  types: [text,]
+- id: sort-gitignore
+  name: sort-gitignore
+  entry: sort-gitignore
+  language: python
+  files: ^.*[.]gitignore$
+  types: [text,]
