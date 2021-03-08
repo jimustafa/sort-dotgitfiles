@@ -28,6 +28,122 @@ For example,
 [1]: https://github.com/github/gitignore/blob/master/C.gitignore
 [2]: https://github.com/alexkaratarakis/gitattributes/blob/master/Python.gitattributes
 
+### Standalone Use
+
+The `sort-git-files` package can be installed with `pip` and run through the command line.
+
+### Examples
+
+An example of sorting a `gitignore` file is given below. Here, the [`Python.gitignore`][3] file from [`github/gitignore`](https://github.com/github/gitignore/) is sorted with `sort-gitignore`.
+
+```diff
+diff --git a/Python.gitignore b/Python.gitignore
+index a81c8ee..7e363e8 100644
+--- a/Python.gitignore
++++ b/Python.gitignore
+@@ -1,30 +1,30 @@
+ # Byte-compiled / optimized / DLL files
+-__pycache__/
+-*.py[cod]
+ *$py.class
++*.py[cod]
++__pycache__/
+
+ # C extensions
+ *.so
+
+ # Distribution / packaging
++*.egg
++*.egg-info/
++.eggs/
++.installed.cfg
+ .Python
+ build/
+ develop-eggs/
+ dist/
+ downloads/
+ eggs/
+-.eggs/
+ lib/
+ lib64/
++MANIFEST
+ parts/
+ sdist/
++share/python-wheels/
+ var/
+ wheels/
+-share/python-wheels/
+-*.egg-info/
+-.installed.cfg
+-*.egg
+-MANIFEST
+
+ # PyInstaller
+ #  Usually these files are written by a python script from a template
+@@ -33,8 +33,8 @@ MANIFEST
+ *.spec
+
+ # Installer logs
+-pip-log.txt
+ pip-delete-this-directory.txt
++pip-log.txt
+
+ # Unit test / coverage reports
+ htmlcov/
+@@ -57,13 +57,13 @@ cover/
+
+ # Django stuff:
+ *.log
+-local_settings.py
+ db.sqlite3
+ db.sqlite3-journal
++local_settings.py
+
+ # Flask stuff:
+-instance/
+ .webassets-cache
++instance/
+
+ # Scrapy stuff:
+ .scrapy
+@@ -79,8 +79,8 @@ target/
+ .ipynb_checkpoints
+
+ # IPython
+-profile_default/
+ ipython_config.py
++profile_default/
+
+ # pyenv
+ #   For a library or package, you might want to ignore these files since the code is
+@@ -107,11 +107,11 @@ celerybeat.pid
+ # Environments
+ .env
+ .venv
++env.bak/
+ env/
+-venv/
+ ENV/
+-env.bak/
+ venv.bak/
++venv/
+
+ # Spyder project settings
+ .spyderproject
+@@ -124,8 +124,8 @@ venv.bak/
+ /site
+
+ # mypy
+-.mypy_cache/
+ .dmypy.json
++.mypy_cache/
+ dmypy.json
+
+ # Pyre type checker
+```
+
+[3]: https://github.com/github/gitignore/blob/218a941be92679ce67d0484547e3e142b2f5f6f0/Python.gitignore
+
 ### Approach
 
 The files are parsed and broken into blocks; different blocks are separated by blanks lines or comments (or both)
