@@ -1,6 +1,56 @@
 [build-system]
-requires = [
-  "setuptools>=42",
-  "wheel",
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sort-dotgitfiles"
+description = "pre-commit hooks for sorting .gitattributes and .gitignore files"
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Jamal Mustafa" }
 ]
-build-backend = "setuptools.build_meta"
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
+]
+dependencies = []
+dynamic = ["version"]
+
+[project.scripts]
+sort-gitattributes = "sort_dotgitfiles.sort_gitattributes:main"
+sort-gitignore = "sort_dotgitfiles.sort_gitignore:main"
+
+[project.urls]
+Homepage = "https://github.com/jimustafa/sort-dotgitfiles"
+Documentation = "https://github.com/jimustafa/sort-dotgitfiles#readme"
+Issues = "https://github.com/jimustafa/sort-dotgitfiles/issues"
+Source = "https://github.com/jimustafa/sort-dotgitfiles"
+
+[tool.hatch]
+build.only-packages = true
+version.path = "src/sort_dotgitfiles/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pre-commit",
+  "tbump",
+]
+
+[tool.hatch.envs.default.scripts]
+tbump-sync = "tbump $(hatch version) --only-patch"
+
+[tool.tbump]
+version.current = "0.1.0b1"
+version.regex = '''
+  (?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)
+  (?P<pre_release>(a|b|rc)\d+)?
+  '''
+git.message_template = "Bump to {new_version}"
+git.tag_template = "v{new_version}"
+
+[[tool.tbump.file]]
+src = "README.md"
+search = "rev: v{current_version}"

@@ -1,4 +1,0 @@
--c setup.txt
-black
-pip-tools
-pre-commit

@@ -1,23 +1,23 @@
-sort-gitfile
-============
+# sort-dotgitfiles
 
 A `pre-commit` hook for sorting `.gitignore` and `.gitattributes` files.
 This can be useful way to keep a consistent format and reduce merge conflicts.
 
-### Adding to the `.pre-commit-config.yaml` file
+## Adding to the `.pre-commit-config.yaml` file
 
 ```yaml
 # .pre-commit-config.yaml
 # -----------------------
 repos:
 # ...
-  - repo: https://github.com/jimustafa/sort-gitfile
-    rev: v0.0.0
+  - repo: https://github.com/jimustafa/sort-dotgitfiles
+    rev: v0.1.0b1
     hooks:
       - id: sort-gitattributes
       - id: sort-gitignore
 # ...
 ```
+
 It is common for the patterns to be separated and organized into blocks,
   with each block corresponding to a category of file types.
 Typically, the blocks are separated by blank lines and accompanied by comments indicating the purpose of the block.
@@ -28,11 +28,11 @@ For example,
 [1]: https://github.com/github/gitignore/blob/master/C.gitignore
 [2]: https://github.com/alexkaratarakis/gitattributes/blob/master/Python.gitattributes
 
-### Standalone Use
+## Standalone Use
 
 The `sort-git-files` package can be installed with `pip` and run through the command line.
 
-### Examples
+## Examples
 
 An example of sorting a `gitignore` file is given below. Here, the [`Python.gitignore`][3] file from [`github/gitignore`](https://github.com/github/gitignore/) is sorted with `sort-gitignore`.
 
@@ -144,7 +144,7 @@ index a81c8ee..7e363e8 100644
 
 [3]: https://github.com/github/gitignore/blob/218a941be92679ce67d0484547e3e142b2f5f6f0/Python.gitignore
 
-### Approach
+## Approach
 
 The files are parsed and broken into blocks; different blocks are separated by blanks lines or comments (or both)
   and sorting of the lines is done within each block (the order of the blocks is preserved).
